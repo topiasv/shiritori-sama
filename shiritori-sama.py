@@ -2,6 +2,10 @@ import discord
 import asyncio
 import unicodedata
 
+with open('clientid.txt', 'r') as clientIdFile:
+    clientId = clientIdFile.read().replace('\n', '')
+clientIdFile.close()
+
 client = discord.Client()
 isGame = False
 currentLetter = 'り'
@@ -61,4 +65,4 @@ async def on_message(message):
             if msg != "":
                 await client.send_message(message.channel, msg)
 
-client.run('CLIENT_TOKEN_HERE')
+client.run(clientId)
